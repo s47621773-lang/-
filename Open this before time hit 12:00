@@ -1,0 +1,132 @@
+-<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>For Fariya ❤️</title>
+
+<style>
+body {
+    margin:0;
+    font-family: 'Segoe UI', sans-serif;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    color:white;
+    text-align:center;
+    background: linear-gradient(-45deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3);
+    background-size: 400% 400%;
+    animation: bg 10s ease infinite;
+}
+
+@keyframes bg {
+    0% {background-position:0%}
+    50% {background-position:100%}
+    100% {background-position:0%}
+}
+
+h1 { font-size:2rem; }
+
+.countdown {
+    display:flex;
+    gap:15px;
+    margin-top:20px;
+}
+
+.box {
+    background: rgba(255,255,255,0.2);
+    padding:15px;
+    border-radius:15px;
+}
+
+.number {
+    font-size:1.8rem;
+    font-weight:bold;
+}
+
+#final {
+    display:none;
+    font-size:1.8rem;
+    margin-top:20px;
+}
+
+#secretBtn {
+    margin-top:20px;
+    padding:10px 20px;
+    border:none;
+    border-radius:20px;
+    background:#ff4d6d;
+    color:white;
+    font-size:1rem;
+    display:none;
+}
+
+#secretMsg {
+    display:none;
+    margin-top:20px;
+    font-size:1.2rem;
+    animation: fade 1s ease;
+}
+
+@keyframes fade {
+    from {opacity:0;}
+    to {opacity:1;}
+}
+</style>
+</head>
+
+<body>
+
+<h1 id="title">Countdown for Fariya ❤️</h1>
+
+<div class="countdown" id="countdown">
+    <div class="box"><div class="number" id="d">0</div>Days</div>
+    <div class="box"><div class="number" id="h">0</div>Hours</div>
+    <div class="box"><div class="number" id="m">0</div>Minutes</div>
+    <div class="box"><div class="number" id="s">0</div>Seconds</div>
+</div>
+
+<div id="final">
+🎉 Happy Birthday Fariya 🎂💖
+</div>
+
+<button id="secretBtn" onclick="showMsg()">Tap for Surprise 💌</button>
+
+<div id="secretMsg">
+You are the most special person in my life ❤️<br>
+I hope your day is full of happiness 🥺✨
+</div>
+
+<script>
+const birthday = new Date("2026-04-06T00:00:00");
+
+function update() {
+    const now = new Date();
+    const diff = birthday - now;
+
+    if (diff <= 0) {
+        document.getElementById("countdown").style.display = "none";
+        document.getElementById("title").innerText = "🎂 It's Your Day!";
+        document.getElementById("final").style.display = "block";
+        document.getElementById("secretBtn").style.display = "inline-block";
+        return;
+    }
+
+    document.getElementById("d").innerText = Math.floor(diff/(1000*60*60*24));
+    document.getElementById("h").innerText = Math.floor((diff/(1000*60*60))%24);
+    document.getElementById("m").innerText = Math.floor((diff/(1000*60))%60);
+    document.getElementById("s").innerText = Math.floor((diff/1000)%60);
+}
+
+setInterval(update,1000);
+update();
+
+function showMsg(){
+    document.getElementById("secretMsg").style.display="block";
+}
+</script>
+
+</body>
+</html>
